@@ -1,0 +1,30 @@
+﻿@page "/Thing_1"
+@rendermode InteractiveServer
+
+ 
+
+@code {
+    int i = 0;
+
+    private void Increase()
+    {
+         i++;
+    }
+
+    private void Decreas()
+    {
+         i--;
+    }
+
+    private void ZeroI()
+    {
+       i = 0;
+    }
+}
+
+<button @onclick="Increase"> increasment:\</button>
+<button @onclick="Decreas">decreasment</button>
+<button @onclick="ZeroI"> zero i</button>
+
+<h1>the value of i is @i</h1>
+

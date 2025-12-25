@@ -1,0 +1,25 @@
+﻿@page "/Thing_2"
+@rendermode InteractiveServer
+
+<h3>Thing_2</h3>
+
+@code {
+    Random rnd = new Random();
+    int i;
+    int j;
+
+    private void rnadom()
+    {
+
+        i = rnd.Next(1, 7);
+        j = rnd.Next(1, 7);
+    }
+
+}
+
+<h1>random thing</h1>
+<button @onclick="rnadom">click meee</button>
+<p>@i @j</p>
+
+
+

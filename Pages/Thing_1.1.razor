@@ -1,0 +1,62 @@
+﻿@page "/Thing_1.1"
+@rendermode InteractiveServer
+
+@code {
+    int val;
+    int val2;
+
+    int bigger;
+    int smaler;
+
+    int[] result;
+
+    bool isclicked = false;
+
+    private void beenClickd()
+    {
+        result = hugahuga(val, val2);   // <-- logic goes here
+        isclicked = true;
+    }
+
+    private int[] hugahuga(int var1, int var2)
+    {
+        if (val > val2)
+        {
+            bigger = val;
+            smaler = val2;
+        }
+        else
+        {
+            bigger = val2;
+            smaler = val;
+        }
+
+        int length = bigger - smaler + 1;
+        int[] arr = new int[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            arr[i] = smaler + i;
+        }
+
+        return arr;
+    }
+}
+
+
+<input type="number" @bind="val" />
+<input type="number" @bind="val2" />
+
+<br />
+
+
+<button @onclick="beenClickd", style="margin:20px;">click meeejwnchwbcherbc</button>
+
+
+@if (isclicked)
+{
+    @foreach (var n in result)
+    {
+        <span style="margin-left: 3px;">@n</span>
+    }
+}

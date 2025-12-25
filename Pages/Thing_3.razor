@@ -1,0 +1,33 @@
+﻿@page "/Thing_3"
+@rendermode InteractiveServer
+
+<h3>Thing_3</h3>
+
+@code {
+    Random rnd = new Random();
+    int k;
+    bool beemClicked = false;
+
+    int[] list = new int[100];
+
+    private void Smth()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            beemClicked = true;
+            k = rnd.Next(1, 101);
+            list[i] = k;
+        }
+    }
+
+}
+
+<button @onclick="Smth">click me</button>
+
+@if(beemClicked == true){
+@for(int i = 0; i < list.Length; i++)
+{
+    <span style="margin-left:3px;">@list[i]</span>
+}
+}
+

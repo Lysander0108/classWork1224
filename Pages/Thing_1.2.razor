@@ -1,0 +1,61 @@
+﻿@page "/Thing_1.2"
+@rendermode InteractiveServer
+
+<h3>Thing_1.2</h3>
+
+@code {
+    Random rnd = new Random();
+    int boomNum;
+    bool beenClicked = false;
+    int[] arry;
+
+    private void isClicked()
+    {
+        beenClicked = true;
+        arry = Boom(boomNum);
+    }
+    private int[] Boom(int num)
+    {
+
+        int[] boomin = new int[100];
+      
+        for(int i =0;i < 100; i++)
+        {
+            int numnum = rnd.Next(101);
+           
+            
+            if (numnum == num || numnum % num == 0|| numnum / 10 == num )
+            {
+                boomin[i] = 999;
+            }
+            else
+            {
+                boomin[i] = numnum;
+            }
+
+        }
+        return boomin;
+
+    }
+}
+
+<input type="number" @bind="boomNum"/>
+<br/>
+
+<button @onclick="isClicked">click mee</button>
+@if(beenClicked)
+{
+    foreach(var bluh in arry)
+    {
+        if(bluh == 999)
+        {
+            <span style="margin-left:3px; color: red;">BOOM</span>
+        }
+        else
+        {
+            <span style="margin-left:3px;">@bluh</span>
+        }
+    }
+}
+
+
