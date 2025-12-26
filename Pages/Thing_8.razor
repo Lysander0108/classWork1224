@@ -1,0 +1,106 @@
+﻿@page "/Thing_8"
+@rendermode InteractiveServer
+
+<h3>Custom card</h3>
+
+@code {
+    Random rnd = new Random();
+    string textColor;
+    string backgtoundColor;
+    string mainText;
+    string header;
+
+    string fontSize;
+
+    bool beenClicked = false;
+    bool beenClickedRandom = false;
+
+    int rgb_R;
+    int rgb_G;
+    int rgb_B;
+
+    int rgb_r;
+    int rgb_g;
+    int rgb_b;
+
+
+
+    private void SetRandomCard()
+    {
+        beenClickedRandom = true;
+        beenClicked = false;
+
+        rgb_B = rnd.Next(256);
+        rgb_G = rnd.Next(256);
+        rgb_R = rnd.Next(256);
+
+        rgb_b = rnd.Next(256) ;
+        rgb_g = rnd.Next(256) ;
+        rgb_r = rnd.Next(256) ;
+
+
+    }
+    private void SetCard()
+    {
+        beenClicked = true;
+    }
+}
+
+<div class="div1" style="margin-left: 10px;">
+
+    <label>Font size:</label>
+    <select @bind="fontSize">
+        <option value="h1">מאוד גדול</option>
+        <option value="h2">גדול</option>
+        <option value="h3">רגיל</option>
+        <option value="h4">קטן</option>
+    </select>
+
+    <div>
+        <text>Text color: </text>
+        <input type="text" @bind="textColor" />
+    </div>
+
+    <div>
+        <text>Background color: </text>
+        <input type="text" @bind="backgtoundColor" />
+    </div>
+
+    <div>
+        <text>Main text: </text>
+        <input type="text" @bind="mainText" />
+    </div>
+
+    <div>
+        <text>Header: </text>
+        <input type="text" @bind="header" />
+    </div>
+</div>
+
+<button style="margin-bottom: 10px;" @onclick="SetCard">Click me to create card!</button>
+
+@if (beenClicked)
+{
+    <div class="custom-card"
+         style="background:@backgtoundColor; color:@textColor;">
+
+        <h4>@header</h4>
+        <p>@mainText</p>
+
+    </div>
+}
+
+<button style="margin-bottom: 10px;" @onclick="SetRandomCard">click me for random!</button>
+@if(beenClickedRandom)
+{
+
+    <div class="custom_random_card" 
+      style="color: rgb(@rgb_R, @rgb_G, @rgb_B);
+       background-color: rgb(@rgb_r, @rgb_g, @rgb_b);"
+        >xhtml10fx
+        <h4>@header</h4>
+        <p>@mainText</p>
+
+    </div>
+}
+
